@@ -53,6 +53,7 @@ final class BenchmarkUtils {
   @Nonnull
   private static String getFileContent() throws IOException {
 
+    System.out.println(BENCHMARK_RESULTS_FILE_PATH);
     final byte[] fileBytes = Files.readAllBytes(Paths.get(BENCHMARK_RESULTS_FILE_PATH));
     return new String(fileBytes, UTF8_CHARSET);
   }
