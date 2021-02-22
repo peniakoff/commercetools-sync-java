@@ -25,9 +25,8 @@ jobs:
           same-branch-only: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/setup-java@v1
-        with:
-          java-version: 11
+      - name: Echo version
+      - run: java --version
       - name: Fetch Library version
         id: vars
         run: echo ::set-output name=libVersion::${GITHUB_REF#refs/*/}
