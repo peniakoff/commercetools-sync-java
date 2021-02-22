@@ -543,10 +543,11 @@ class CategorySyncIT {
 
     // Process same draft again in a different batch but with a different name.
     final LocalizedString anotherNewName = LocalizedString.of(Locale.ENGLISH, "another new name");
-    categoryDraft1 = CategoryDraftBuilder.of(categoryDraft1).name(anotherNewName).build();
+    final CategoryDraft categoryDraft1Updated =
+        CategoryDraftBuilder.of(categoryDraft1).name(anotherNewName).build();
 
     final List<CategoryDraft> batch2 = new ArrayList<>();
-    batch2.add(categoryDraft1);
+    batch2.add(categoryDraft1Updated);
 
     final CategorySyncStatistics syncStatistics =
         categorySync
@@ -561,7 +562,7 @@ class CategorySyncIT {
         CTP_TARGET_CLIENT
             .execute(
                 CategoryQuery.of()
-                    .bySlug(Locale.ENGLISH, categoryDraft1.getSlug().get(Locale.ENGLISH)))
+                    .bySlug(Locale.ENGLISH, categoryDraft1Updated.getSlug().get(Locale.ENGLISH)))
             .toCompletableFuture()
             .join()
             .head();
