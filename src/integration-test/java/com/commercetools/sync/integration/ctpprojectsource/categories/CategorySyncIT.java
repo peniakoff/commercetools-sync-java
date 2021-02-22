@@ -175,10 +175,10 @@ class CategorySyncIT {
             .toCompletableFuture()
             .join();
 
-    assertThat(syncStatistics).hasValues(130, 130, 0, 0, 0);
     assertThat(callBackErrorResponses).isEmpty();
     assertThat(callBackExceptions).isEmpty();
     assertThat(callBackWarningResponses).isEmpty();
+    assertThat(syncStatistics).hasValues(130, 130, 0, 0, 0);
   }
 
   @Test
