@@ -44,3 +44,22 @@ jobs:
           TARGET_CLIENT_SECRET: ${{ secrets.TARGET_CLIENT_SECRET }}
       - name: Codecov
         uses: codecov/codecov-action@v1
+
+  publish_staging:
+    name: Publish to staging repo
+    needs: tests
+    runs-on: ubuntu-latest
+    env:
+      GRGIT_USER: ${{ secrets.GRGIT_USER }}
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=libVersion::${GITHUB_REF#refs/*/}
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: status
+        run: echo Artifact is named as ${{ steps.vars.outputs.libVersion }}.
