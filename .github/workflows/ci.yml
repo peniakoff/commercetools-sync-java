@@ -31,7 +31,7 @@ jobs:
 
   publish_staging:
     name: Publish to staging repo
-    needs: tests
+    needs: build
     runs-on: ubuntu-latest
     env:
       GRGIT_USER: ${{ secrets.GRGIT_USER }}
