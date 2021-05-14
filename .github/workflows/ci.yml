@@ -56,7 +56,7 @@ jobs:
           PGP_KEY: ${{ secrets.PGP_KEY }}
           PGP_PASSWORD: ${{ secrets.PGP_PASSWORD }}
       - name: remove staging repo
-        run: ./gradlew setLibraryVersion -Dbuild.version="${{ steps.vars.outputs.tag }}" closeSonatypeStagingRepository
+        run: ./gradlew -Dbuild.version="${{ steps.vars.outputs.tag }}" closeSonatypeStagingRepository
         env:
           GITHUB_TAG: ${{ steps.vars.outputs.tag }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
