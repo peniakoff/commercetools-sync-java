@@ -48,7 +48,7 @@ jobs:
       - name: status
         run: echo Artifact is named as ${{ steps.vars.outputs.libVersion }}.
       - name: deploy to sonatype
-        run: ./gradlew setLibraryVersion -Dbuild.version="${{ steps.vars.outputs.tag }}" publishToSonatype
+        run: ./gradlew setLibraryVersion -Dbuild.version="${{ steps.vars.outputs.tag }}" publishAllPublicationsToSonatypeRepository
         env:
           GITHUB_TAG: ${{ steps.vars.outputs.tag }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
