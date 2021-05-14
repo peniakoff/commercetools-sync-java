@@ -36,6 +36,15 @@ jobs:
     env:
       GRGIT_USER: ${{ secrets.GRGIT_USER }}
     steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Set up Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
       - name: deploy to sonatype
         run: ./gradlew setLibraryVersion -Dbuild.version="commercetools-sync-java-SNAPSHOT" publish
         env:
