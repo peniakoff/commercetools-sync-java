@@ -37,7 +37,7 @@ jobs:
       GRGIT_USER: ${{ secrets.GRGIT_USER }}
     steps:
       - name: deploy to sonatype
-        run: ./gradlew setLibraryVersion -Dbuild.version="${{ steps.vars.outputs.tag }}" publish
+        run: ./gradlew setLibraryVersion -Dbuild.version="commercetools-sync-java-SNAPSHOT" publish
         env:
           GITHUB_TAG: ${{ steps.vars.outputs.tag }}
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
