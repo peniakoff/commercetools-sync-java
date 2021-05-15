@@ -4,8 +4,6 @@ nexusPublishing {
         sonatype {
             username = System.getenv("MAVEN_USERNAME")
             password = System.getenv("MAVEN_PASSWORD")
-            nexusUrl.set(uri("https://oss.sonatype.org/content/groups/staging/"))
-            snapshotRepositoryUrl.set(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }
